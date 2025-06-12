@@ -12,12 +12,11 @@ document.getElementById("wishlistForm").addEventListener("submit", async functio
   const encoded = encodeURIComponent(JSON.stringify(data));
   const longUrl = `${window.location.origin}/wishlist.html?data=${encoded}`;
 
-  // Show "generating" message
   const output = document.getElementById("linkOutput");
   output.innerHTML = "Generating short link...";
 
   try {
-    const res = await fetch("https://cleanuri.com/api/v1/shorten", {
+    const response = await fetch("https://cleanuri.com/api/v1/shorten", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -25,7 +24,12 @@ document.getElementById("wishlistForm").addEventListener("submit", async functio
       body: `url=${encodeURIComponent(longUrl)}`
     });
 
-    const result = await res.json();
+    const text = await response.text();
+
+    // Log full response for debugging
+    console.log("Raw response:", text);
+
+    const result = JSON.parse(text);
 
     if (result.result_url) {
       output.innerHTML = `
@@ -35,9 +39,8 @@ document.getElementById("wishlistForm").addEventListener("submit", async functio
     } else {
       output.innerHTML = "Something went wrong. Couldn't shorten the link.";
     }
-
-  } catch (err) {
+  } catch (error) {
     output.innerHTML = "Failed to generate link. Please try again.";
-    console.error(err);
+    console.error("Error shortening URL:", error);
   }
 });
