@@ -1,28 +1,24 @@
-// assets/js/wishlist.js
+window.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const encodedData = params.get("data");
 
-const params = new URLSearchParams(window.location.search);
-const data = JSON.parse(decodeURIComponent(params.get("data")));
+  if (!encodedData) {
+    document.getElementById("wishlistInfo").innerHTML = "<p>Invalid link</p>";
+    return;
+  }
 
-document.getElementById("wishlistInfo").innerHTML = `
-  <p><strong>Category:</strong> ${data.category}</p>
-  <p><strong>Hint:</strong> ${data.hint}</p>
-  <p><strong>Budget:</strong> ${data.budget}</p>
-  <p><strong>Note:</strong> ${data.note || "No note."}</p>
-`;
+  const decoded = JSON.parse(decodeURIComponent(encodedData));
 
-const products = [
-  { name: "Red Summer Dress", price: "₹999", site: "Myntra", link: "#" },
-  { name: "Elegant Red Gown", price: "₹1999", site: "Flipkart", link: "#" },
-  { name: "Trendy Red Kurti", price: "₹599", site: "Amazon", link: "#" },
-];
+  document.getElementById("wishlistInfo").innerHTML = `
+    <h2>🎉 Surprise Category: ${decoded.category}</h2>
+    <p><strong>Hint:</strong> ${decoded.hint || "No hint provided"}</p>
+    <p><strong>Budget:</strong> ₹${decoded.budget || "Not specified"}</p>
+    <p><strong>Note:</strong> ${decoded.note || "No note provided"}</p>
+  `;
 
-const suggestionDiv = document.getElementById("suggestions");
-products.forEach(p => {
-  suggestionDiv.innerHTML += `
-    <div class="product">
-      <p><strong>${p.name}</strong></p>
-      <p>${p.price} - ${p.site}</p>
-      <a href="${p.link}" target="_blank">View</a>
-    </div>
+  // Placeholder: Add suggestions
+  document.getElementById("suggestions").innerHTML = `
+    <h3>🛍 Suggestions coming soon...</h3>
+    <p>We’ll show ${decoded.category.toLowerCase()} from Flipkart/Myntra/etc.</p>
   `;
 });
