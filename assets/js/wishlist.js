@@ -2,7 +2,7 @@
 // Add this function at the top or just above DOMContentLoaded
 
 function generateSearchLinks({ category, hint, budget }) {
-  const keywords = `${category} ${hint}  ${category}  ${budget}`.replace(/\s+/g, "+");
+  const keywords = ` ${hint}  ${category}  ${budget}`.replace(/\s+/g, "+");
 
   const links = {
     Flipkart: `https://www.flipkart.com/search?q=${keywords}`,
