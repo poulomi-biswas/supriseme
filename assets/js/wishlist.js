@@ -2,12 +2,16 @@
 // Add this function at the top or just above DOMContentLoaded
 
 function generateSearchLinks({ category, hint, budget }) {
-  const keywords = `${hint} ${category} ${budget}`.replace(/\s+/g, "+");
+  const keywords = `${category} ${hint}  ${category}  ${budget}`.replace(/\s+/g, "+");
 
   const links = {
     Flipkart: `https://www.flipkart.com/search?q=${keywords}`,
     Amazon: `https://www.amazon.in/s?k=${keywords}`,
     Myntra: `https://www.myntra.com/${keywords}`,
+    Urbanic: `https://www.urbanic.com/search?q=${keywords}`,
+    Ajio: `https://www.ajio.com/search/${keywords}`,
+    TataCliq: `https://www.tatacliq.com/search/?text=${keywords}`,
+    
   };
 
   const container = document.getElementById("shoppingLinks");
