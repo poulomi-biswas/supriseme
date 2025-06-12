@@ -1,3 +1,28 @@
+
+// Add this function at the top or just above DOMContentLoaded
+
+function generateSearchLinks({ category, hint, budget }) {
+  const keywords = `${hint} ${category} ${budget}`.replace(/\s+/g, "+");
+
+  const links = {
+    Flipkart: `https://www.flipkart.com/search?q=${keywords}`,
+    Amazon: `https://www.amazon.in/s?k=${keywords}`,
+    Myntra: `https://www.myntra.com/${keywords}`,
+  };
+
+  const container = document.getElementById("shoppingLinks");
+  container.innerHTML = "<h3>🛍 View Suggestions On:</h3>";
+
+  for (const [site, url] of Object.entries(links)) {
+    const button = document.createElement("a");
+    button.href = url;
+    button.target = "_blank";
+    button.rel = "noopener noreferrer";
+    button.className = "shop-link";
+    button.innerText = site;
+    container.appendChild(button);
+  }
+}
 window.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const encodedData = params.get("data");
@@ -6,7 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("wishlistInfo").innerHTML = "<p>Invalid link</p>";
     return;
   }
-
+try{
   const decoded = JSON.parse(decodeURIComponent(encodedData));
 
   document.getElementById("wishlistInfo").innerHTML = `
@@ -15,6 +40,11 @@ window.addEventListener("DOMContentLoaded", () => {
     <p><strong>Budget:</strong> ₹${decoded.budget || "Not specified"}</p>
     <p><strong>Note:</strong> ${decoded.note || "No note provided"}</p>
   `;
+  generateSearchLinks(decoded);
+}catch (err) {
+    console.error("Error decoding wishlist data:", err);
+    outputDiv.innerHTML = "<p>❌ Could not decode surprise details. Something went wrong.</p>";
+  }
 
   // Placeholder: Add suggestions
   document.getElementById("suggestions").innerHTML = `
