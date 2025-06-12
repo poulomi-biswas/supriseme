@@ -49,47 +49,5 @@ document.getElementById("wishlistForm").addEventListener("submit", async functio
   }
 });
 
-// assets/js/particles.js
-const canvas = document.getElementById("particle-canvas");
-const ctx = canvas.getContext("2d");
 
-let particlesArray;
-
-function initParticles() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  particlesArray = [];
-
-  const numParticles = 40;
-  for (let i = 0; i < numParticles; i++) {
-    particlesArray.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      size: Math.random() * 3 + 1,
-      dx: (Math.random() - 0.5) * 0.5,
-      dy: (Math.random() - 0.5) * 0.5,
-    });
-  }
-}
-
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particlesArray.forEach((p) => {
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(255, 182, 193, 0.7)";
-    ctx.fill();
-    p.x += p.dx;
-    p.y += p.dy;
-
-    // bounce logic
-    if (p.x < 0 || p.x > canvas.width) p.dx = -p.dx;
-    if (p.y < 0 || p.y > canvas.height) p.dy = -p.dy;
-  });
-  requestAnimationFrame(animateParticles);
-}
-
-window.addEventListener("resize", initParticles);
-initParticles();
-animateParticles();
 
