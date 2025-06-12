@@ -1,6 +1,3 @@
-
-// Add this function at the top or just above DOMContentLoaded
-
 function generateSearchLinks({ category, hint, budget }) {
   const keywords = `${hint} ${category} ${budget}`.trim().replace(/\s+/g, "+");
 
@@ -45,21 +42,7 @@ function generateSearchLinks({ category, hint, budget }) {
     container.appendChild(a);
   });
 }
-// Function to generate shopping links based on decoded data
 
-  const container = document.getElementById("shoppingLinks");
-  container.innerHTML = "<h3>🛍 View Suggestions On:</h3>";
-
-  for (const [site, url] of Object.entries(links)) {
-    const button = document.createElement("a");
-    button.href = url;
-    button.target = "_blank";
-    button.rel = "noopener noreferrer";
-    button.className = "shop-link";
-    button.innerText = site;
-    container.appendChild(button);
-  }
-}
 window.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const encodedData = params.get("data");
