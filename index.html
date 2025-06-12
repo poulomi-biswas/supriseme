@@ -2,44 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SurpriseMe - Create Wishlist</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Your Wishlist 💝</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Create Your Surprise Wishlist</h1>
+  <div class="form-container">
+    <h1>💌 Create Your Surprise Wishlist</h1>
+    <p class="subtitle">Choose what you want without spoiling the surprise!</p>
+    
     <form id="wishlistForm">
-      <label>What kind of gift do you want?</label>
-        <select name="category" required>
-        <option value="">Choose</option>
+      <label>Category</label>
+      <select name="category" required>
+        <option value="">Select</option>
         <option value="Fashion">Fashion</option>
-        <option value="Accessories">Accessories</option>
-        <option value="Books">Books</option>
         <option value="Beauty">Beauty</option>
-        <option value="Electronics">Electronics</option>
-        <option value="Food">Food</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Gadgets">Gadgets</option>
       </select>
 
-      <label>Any hint or keyword?</label>
-      <input type="text" name="hint" placeholder="e.g. red dress" />
+      <label>What kind of item? (e.g. red dress, lipstick)</label>
+      <input type="text" name="hint" placeholder="Give a hint..." required>
 
       <label>Budget</label>
-      <select name="budget">
-        <option value="under500">0 - ₹500</option>
-        <option value="500to2000">₹500 - ₹2000</option>
-        <option value="above2000">₹2000- ₹3500</option>
-        <option value="above3500">Above ₹3500</option>
+      <select name="budget" required>
+        <option value="">Choose</option>
+        <option value="under500">Under ₹500</option>
+        <option value="under1000">Under ₹1000</option>
+        <option value="under2000">Under ₹2000</option>
+        <option value="under5000">Under ₹5000</option>
+        <option value="above5000">Above ₹5000</option>
+        <option value="custom">Custom Amount</option>
         <option value="noLimit">No Limit</option>
       </select>
 
-      <label>Personal Note (optional)</label>
-      <textarea name="note" placeholder="Hey, just a hint 😉"></textarea>
+      <label>Optional Note</label>
+      <textarea name="note" rows="3" placeholder="Add any special note (optional)"></textarea>
 
-      <button type="submit">Generate Surprise Link</button>
+      <button type="submit">🎁 Generate Surprise Link</button>
+
+      <div id="result" class="result-section">
+        <p id="shortLink"></p>
+        <button id="copyBtn" style="display:none;">📋 Copy Link</button>
+      </div>
     </form>
-    <div id="linkOutput"></div>
   </div>
 
-  <script src="assets/js/forms.js"></script>
+  <script src="assets/js/form.js"></script>
 </body>
 </html>
