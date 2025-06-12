@@ -20,3 +20,83 @@
 .shop-link:hover {
   background-color: #3730a3;
 }
+/* === CUTE PEACHY THEME STYLES === */
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Pacifico&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: #fff6f2;
+  color: #5b4b49;
+  text-align: center;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: 'Pacifico', cursive;
+  color: #ff6f61;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  color: #5b4b49;
+}
+
+/* Wishlist Info Card */
+#wishlistInfo {
+  background: #ffe9e4;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 20px;
+  max-width: 500px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Store Buttons */
+.shop-links-container {
+  margin: 30px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.shop-link {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #ffb3ab;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  border: none;
+}
+
+.shop-link:hover {
+  background: #ff867f;
+  transform: scale(1.05);
+}
+
+/* Cute emojis spacing */
+.shop-link::before {
+  margin-right: 4px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .shop-links-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #wishlistInfo {
+    margin: 20px 10px;
+  }
+}

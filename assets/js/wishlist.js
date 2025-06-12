@@ -25,7 +25,29 @@ function generateSearchLinks({ category, hint, budget }) {
       url: `https://www.google.com/search?q=site:urbanic.com+${keywords}`,
       icon: "✨",
       note: "Google search on Urbanic"
+    },
+
+    {
+        name: " Ajio ",
+        url: `https://www.google.com/search?q=site:ajio.com+${keywords}`,
+        icon: "👖",
+        note: "Google search on Ajio"
+    },
+
+    {
+        name:" Nykaa",
+        url: `https://www.google.com/search?q=site:nykaa.com+${keywords}`,
+        icon: "💄",
+        note: "Google search on Nykaa"
+    },
+
+    {
+        name: "Meesho",
+        url: `https://www.google.com/search?q=site:meesho.com+${keywords}`, 
+        icon: "🛍️",
+        note: "Google search on Meesho"
     }
+
   ];
 
   const container = document.getElementById("shoppingLinks");
