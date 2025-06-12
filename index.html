@@ -1,0 +1,46 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SurpriseMe - Create Wishlist</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Create Your Surprise Wishlist</h1>
+    <form id="wishlistForm">
+      <label>What kind of gift do you want?</label>
+        <select name="category" required>
+        <option value="">Choose</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Accessories">Accessories</option>
+        <option value="Books">Books</option>
+        <option value="Beauty">Beauty</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Food">Food</option>
+      </select>
+
+      <label>Any hint or keyword?</label>
+      <input type="text" name="hint" placeholder="e.g. red dress" />
+
+      <label>Budget</label>
+      <select name="budget">
+        <option value="under500">Under ₹500</option>
+        <option value="500to2000">₹500 - ₹2000</option>
+        <option value="above2000">₹2000- ₹3500</option>
+        <option value="above3500">Above ₹3500</option>
+        <option value="noLimit">No Limit</option>
+      </select>
+
+      <label>Personal Note (optional)</label>
+      <textarea name="note" placeholder="Hey, just a hint 😉"></textarea>
+
+      <button type="submit">Generate Surprise Link</button>
+    </form>
+    <div id="linkOutput"></div>
+  </div>
+
+  <script src="assets/js/forms.js"></script>
+</body>
+</html>
