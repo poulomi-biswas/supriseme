@@ -9,19 +9,19 @@ function generateSearchLinks({ category, hint, budget }) {
       note: "Direct Flipkart search"
     },
     {
-      name: "Amazon",
+      name: "Amazon ",
       url: `https://www.amazon.in/s?k=${keywords}`,
       icon: "📦",
       note: "Direct Amazon search"
     },
     {
-      name: "Myntra",
+      name: " Myntra ",
       url: `https://www.google.com/search?q=site:myntra.com+${keywords}`,
       icon: "👗",
       note: "Google search on Myntra"
     },
     {
-      name: "Urbanic",
+      name: " Urbanic ",
       url: `https://www.google.com/search?q=site:urbanic.com+${keywords}`,
       icon: "✨",
       note: "Google search on Urbanic"
