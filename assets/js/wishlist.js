@@ -8,9 +8,9 @@ function generateSearchLinks({ category, hint, budget }) {
     Flipkart: `https://www.flipkart.com/search?q=${keywords}`,
     Amazon: `https://www.amazon.in/s?k=${keywords}`,
     Myntra: `https://www.myntra.com/${keywords}`,
-    Urbanic: `https://www.urbanic.com/search?q=${keywords}`,
-    Ajio: `https://www.ajio.com/search/${keywords}`,
-    TataCliq: `https://www.tatacliq.com/search/?text=${keywords}`,
+    Urbanic: `https://www.urbanic.com/${keywords}`,
+    Ajio: `https://www.ajio.com/${keywords}`,
+    TataCliq: `https://www.tatacliq.com/${keywords}`,
     
   };
 
