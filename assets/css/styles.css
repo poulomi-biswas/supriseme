@@ -1,0 +1,22 @@
+.shop-links-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.shop-link {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #4f46e5;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.shop-link:hover {
+  background-color: #3730a3;
+}
