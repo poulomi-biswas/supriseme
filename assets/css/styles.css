@@ -70,8 +70,8 @@ form input,
 form select,
 form textarea {
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 12px;
+  padding: 10px 1px;
+  border-radius: 15px;
   border: 1px solid #ddd;
   outline: none;
   font-family: inherit;
