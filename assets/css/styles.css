@@ -297,10 +297,6 @@ body.wishlist-page {
     max-width: 90%;
   }
 }
-@media screen and (max-width: 768px) {
-  .shop-links-container {
-    right: 10px;
-  }
-}
+
 
 
