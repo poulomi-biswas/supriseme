@@ -2,13 +2,52 @@ function generateSearchLinks({ category, hint, budget }) {
   const keywords = `${hint} ${category} ${budget}`.trim().replace(/\s+/g, "+");
 
   const links = [
-    { name: "Flipkart", url: `https://www.flipkart.com/search?q=${keywords}`, icon: "🛒", note: "Flipkart search" },
-    { name: "Amazon", url: `https://www.amazon.in/s?k=${keywords}`, icon: "📦", note: "Amazon search" },
-    { name: "Myntra", url: `https://www.google.com/search?q=site:myntra.com+${keywords}`, icon: "👗", note: "Myntra via Google" },
-    { name: "Urbanic", url: `https://www.google.com/search?q=site:urbanic.com+${keywords}`, icon: "✨", note: "Urbanic via Google" },
-    { name: "Ajio", url: `https://www.google.com/search?q=site:ajio.com+${keywords}`, icon: "👖", note: "Ajio via Google" },
-    { name: "Nykaa", url: `https://www.google.com/search?q=site:nykaa.com+${keywords}`, icon: "💄", note: "Nykaa via Google" },
-    { name: "Meesho", url: `https://www.google.com/search?q=site:meesho.com+${keywords}`, icon: "🛍️", note: "Meesho via Google" }
+    {
+      name: "Flipkart",
+      url: `https://www.flipkart.com/search?q=${keywords}`,
+      icon: "🛒",
+      note: "Direct Flipkart search"
+    },
+    {
+      name: "Amazon ",
+      url: `https://www.amazon.in/s?k=${keywords}`,
+      icon: "📦",
+      note: "Direct Amazon search"
+    },
+    {
+      name: " Myntra ",
+      url: `https://www.google.com/search?q=site:myntra.com+${keywords}`,
+      icon: "👗",
+      note: "Google search on Myntra"
+    },
+    {
+      name: " Urbanic ",
+      url: `https://www.google.com/search?q=site:urbanic.com+${keywords}`,
+      icon: "✨",
+      note: "Google search on Urbanic"
+    },
+
+    {
+        name: " Ajio ",
+        url: `https://www.google.com/search?q=site:ajio.com+${keywords}`,
+        icon: "👖",
+        note: "Google search on Ajio"
+    },
+
+    {
+        name:" Nykaa",
+        url: `https://www.google.com/search?q=site:nykaa.com+${keywords}`,
+        icon: "💄",
+        note: "Google search on Nykaa"
+    },
+
+    {
+        name: "Meesho",
+        url: `https://www.google.com/search?q=site:meesho.com+${keywords}`, 
+        icon: "🛍️",
+        note: "Google search on Meesho"
+    }
+
   ];
 
   const container = document.getElementById("shoppingLinks");
@@ -26,24 +65,7 @@ function generateSearchLinks({ category, hint, budget }) {
   });
 }
 
-// Handle scroll-based fade-in
-function enableScrollAnimations() {
-  const fadeInElements = document.querySelectorAll('.fade-in');
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-
-  fadeInElements.forEach(el => observer.observe(el));
-}
-
 window.addEventListener("DOMContentLoaded", () => {
-  enableScrollAnimations();
-
   const params = new URLSearchParams(window.location.search);
   const encodedData = params.get("data");
 
@@ -52,51 +74,25 @@ window.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  let decoded;
-  try {
-    decoded = JSON.parse(decodeURIComponent(encodedData));
-  } catch (err) {
+
+try{
+  const decoded = JSON.parse(decodeURIComponent(encodedData));
+
+  document.getElementById("wishlistInfo").innerHTML = `
+    <h2>🎉 Surprise Category: ${decoded.category}</h2>
+    <p><strong>Hint:</strong> ${decoded.hint || "No hint provided"}</p>
+    <p><strong>Budget:</strong> ${decoded.budget || "Not specified"}</p>
+    <p><strong>Note:</strong> ${decoded.note || "No note provided"}</p>
+  `;
+  generateSearchLinks(decoded);
+}catch (err) {
     console.error("Error decoding wishlist data:", err);
-    document.getElementById("wishlistInfo").innerHTML = "<p>❌ Could not decode surprise details.</p>";
-    return;
+    outputDiv.innerHTML = "<p>❌ Could not decode surprise details. Something went wrong.</p>";
   }
 
-  // Populate wishlist info
-  document.getElementById("wishlistInfo").innerHTML = `
-    <h2>🎉 Category: ${decoded.category}</h2>
-    <p><strong>Hint:</strong> ${decoded.hint || "No hint"}</p>
-    <p><strong>Budget:</strong> ${decoded.budget || "Not specified"}</p>
-    <p><strong>Note:</strong> ${decoded.note || "No note"}</p>
-  `;
-
-  // Fill preview modal content
-  document.getElementById("modalContent").innerHTML = `
-    <p><strong>Category:</strong> ${decoded.category}</p>
-    <p><strong>Hint:</strong> ${decoded.hint || "None"}</p>
-    <p><strong>Budget:</strong> ${decoded.budget || "None"}</p>
-    <p><strong>Note:</strong> ${decoded.note || "None"}</p>
-  `;
-
-  // Attach modal open/close logic
-  document.getElementById("openModalBtn").addEventListener("click", () => {
-    document.getElementById("previewModal").classList.add("active");
-  });
-
-  document.getElementById("closeModalBtn").addEventListener("click", () => {
-    document.getElementById("previewModal").classList.remove("active");
-  });
-
-  // Placeholder for suggestions
+  // Placeholder: Add suggestions
   document.getElementById("suggestions").innerHTML = `
-    <h3>💡 Suggestions coming soon...</h3>
-    <p>We’ll show curated <strong>${decoded.category.toLowerCase()}</strong> picks from top sites.</p>
+    <h3>🛍 Suggestions coming soon...</h3>
+    <p>We’ll show ${decoded.category.toLowerCase()} from Flipkart/Myntra/etc.</p>
   `;
-
-  generateSearchLinks(decoded);
-
-  // Filter logic placeholder
-  document.getElementById("priceFilter").addEventListener("change", (e) => {
-    const value = e.target.value;
-    alert(`Filter selected: ${value} — implement logic here.`);
-  });
 });
