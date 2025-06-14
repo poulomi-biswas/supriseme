@@ -63,7 +63,7 @@ function generateSearchLinks({ category, hint, budget }) {
 
 async function fetchAISuggestions({ category, hint, budget }) {
   try {
-    const res = await fetch("https://supriseme-backend.onrender.com", {
+    const res = await fetch("https://supriseme-backend.onrender.com/api/suggestions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
