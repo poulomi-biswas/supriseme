@@ -7,10 +7,30 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body class="wishlist-page">
-  <h1>Someone has a surprise wish! 🎁</h1>
-  <div id="wishlistInfo"></div>
+  <h1 class="fade-in">Someone has a surprise wish! 🎁</h1>
+   <div class="filter-bar fade-in">
+    <label for="priceFilter">Filter by Budget:</label>
+    <select id="priceFilter">
+      <option value="all">All</option>
+      <option value="low">Under ₹1000</option>
+      <option value="mid">₹1000–₹3000</option>
+      <option value="high">Above ₹3000</option>
+    </select>
+  </div>
+
+  <div id="wishlistInfo" class="fade-in"></div>
+  <button class="preview-btn fade-in" id="openModalBtn">🔍 Preview Surprise</button>
   <div id="suggestions" class="fade-in"></div>
-  <div id="shoppingLinks" class="shop-links-container"></div>
+  <div id="shoppingLinks" class="shop-links-container fade-in"></div>
+
+  <!-- Modal for preview -->
+  <div id="previewModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModalBtn">&times;</span>
+      <h3>🎁 Surprise Details Preview</h3>
+      <div id="modalContent"></div>
+    </div>
+  </div>
 
 
   <script src="assets/js/wishlist.js"></script>
