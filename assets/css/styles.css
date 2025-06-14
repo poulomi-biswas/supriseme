@@ -260,6 +260,11 @@ p {
 .shop-link::before {
   margin-right: 4px;
 }
+body.wishlist-page {
+  background: url('https://i.pinimg.com/originals/ae/18/2c/ae182cb4c6e7b8a9785d242a15555a1c.gif') no-repeat center center fixed;
+  background-size: cover;
+}
+
 
 /* Responsive */
 @media (max-width: 600px) {
