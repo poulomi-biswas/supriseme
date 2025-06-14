@@ -240,30 +240,36 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-  color: #4b2e2e;
-  padding: 12px 20px;
-  border-radius: 40px;
+  gap: 10px;
+  background: linear-gradient(135deg, #ffc3a0, #ff758f);
+  color: #3d2b2b;
+  padding: 14px 22px;
+  border-radius: 50px;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   width: 100%;
   max-width: 200px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .shop-links-container a:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  transform: scale(1.04);
+  background: linear-gradient(135deg, #f6d365, #fda085);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
+/* Remove unnecessary duplication */
 .shop-link:hover {
-  transform: translateY(-2px) scale(1.03);
+  transform: scale(1.04);
   background: linear-gradient(135deg, #ff758f, #ffc3a0);
 }
+
 
 /* Cute emojis spacing */
 .shop-link::before {
