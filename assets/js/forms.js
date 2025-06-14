@@ -1,24 +1,35 @@
+// Show/hide custom amount input when "Custom" is selected
+
+
+
+// Handle form submission
 document.getElementById("wishlistForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 
   const form = new FormData(e.target);
+  let budgetValue = form.get("budget");
+
+  // Use custom amount if selected
+  if (budgetValue === "custom") {
+    const customAmount = document.getElementById("customAmount").value;
+    budgetValue = customAmount || "Not specified";
+  }
+
   const data = {
     category: form.get("category"),
     hint: form.get("hint"),
-    budget: form.get("budget"),
+    budget: budgetValue,
     note: form.get("note"),
   };
-
 
   const encoded = encodeURIComponent(JSON.stringify(data));
   const longUrl = `${window.location.origin}/wishlist.html?data=${encoded}`;
   console.log("Long URL before shortening:", longUrl);
+
   const output = document.getElementById("linkOutput");
   output.innerHTML = "Generating short link...";
-  
 
   try {
-    
     const response = await fetch(`https://api.tinyurl.com/create`, {
       method: "POST",
       headers: {
@@ -48,6 +59,14 @@ document.getElementById("wishlistForm").addEventListener("submit", async functio
     console.error("TinyURL Error:", err);
   }
 });
+const budgetSelect = document.getElementById('budget');
+const customAmountInput = document.getElementById('customAmount');
 
-
-
+budgetSelect.addEventListener('change', function () {
+  if (this.value === 'custom') {
+    customAmountInput.style.display = 'block';
+  } else {
+    customAmountInput.style.display = 'none';
+    customAmountInput.value = '';
+  }
+});

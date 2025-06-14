@@ -13,8 +13,8 @@
     <p class="subtitle">Choose what you want without spoiling the surprise!</p>
     
     <form id="wishlistForm">
-      <label>Category</label>
-      <select name="category" required>
+        <label for="category">Category</label>
+        <select id="category" name="category" required>
         <option value="">Select</option>
         <option value="Fashion">Fashion</option>
         <option value="Beauty">Beauty</option>
@@ -22,11 +22,12 @@
         <option value="Gadgets">Gadgets</option>
       </select>
 
+
       <label>What kind of item? (e.g. red dress, lipstick)</label>
       <input type="text" name="hint" placeholder="Give a hint..." required>
 
-      <label>Budget</label>
-      <select name="budget" required>
+      <label for="budget">Budget</label>
+      <select id="budget" name="budget" required>
         <option value="">Choose</option>
         <option value="under500">Under ₹500</option>
         <option value="under1000">Under ₹1000</option>
@@ -36,6 +37,8 @@
         <option value="custom">Custom Amount</option>
         <option value="noLimit">No Limit</option>
       </select>
+      <input type="number" id="customAmount" name="customAmount" placeholder="Enter custom amount" style="display: none; margin-top: 10px;" />
+
 
       <label>Optional Note</label>
       <textarea name="note" rows="3" placeholder="Add any special note (optional)"></textarea>

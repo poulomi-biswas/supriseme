@@ -79,7 +79,7 @@ try{
   document.getElementById("wishlistInfo").innerHTML = `
     <h2>🎉 Surprise Category: ${decoded.category}</h2>
     <p><strong>Hint:</strong> ${decoded.hint || "No hint provided"}</p>
-    <p><strong>Budget:</strong> ₹${decoded.budget || "Not specified"}</p>
+    <p><strong>Budget:</strong> ${decoded.budget || "Not specified"}</p>
     <p><strong>Note:</strong> ${decoded.note || "No note provided"}</p>
   `;
   generateSearchLinks(decoded);
