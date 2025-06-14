@@ -9,45 +9,41 @@ function generateSearchLinks({ category, hint, budget }) {
       note: "Direct Flipkart search"
     },
     {
-      name: "Amazon ",
+      name: "Amazon",
       url: `https://www.amazon.in/s?k=${keywords}`,
       icon: "📦",
       note: "Direct Amazon search"
     },
     {
-      name: " Myntra ",
+      name: "Myntra",
       url: `https://www.google.com/search?q=site:myntra.com+${keywords}`,
       icon: "👗",
       note: "Google search on Myntra"
     },
     {
-      name: " Urbanic ",
+      name: "Urbanic",
       url: `https://www.google.com/search?q=site:urbanic.com+${keywords}`,
       icon: "✨",
       note: "Google search on Urbanic"
     },
-
     {
-        name: " Ajio ",
-        url: `https://www.google.com/search?q=site:ajio.com+${keywords}`,
-        icon: "👖",
-        note: "Google search on Ajio"
+      name: "Ajio",
+      url: `https://www.google.com/search?q=site:ajio.com+${keywords}`,
+      icon: "👖",
+      note: "Google search on Ajio"
     },
-
     {
-        name:" Nykaa",
-        url: `https://www.google.com/search?q=site:nykaa.com+${keywords}`,
-        icon: "💄",
-        note: "Google search on Nykaa"
+      name: "Nykaa",
+      url: `https://www.google.com/search?q=site:nykaa.com+${keywords}`,
+      icon: "💄",
+      note: "Google search on Nykaa"
     },
-
     {
-        name: "Meesho",
-        url: `https://www.google.com/search?q=site:meesho.com+${keywords}`, 
-        icon: "🛍️",
-        note: "Google search on Meesho"
+      name: "Meesho",
+      url: `https://www.google.com/search?q=site:meesho.com+${keywords}`,
+      icon: "🛍️",
+      note: "Google search on Meesho"
     }
-
   ];
 
   const container = document.getElementById("shoppingLinks");
@@ -65,34 +61,62 @@ function generateSearchLinks({ category, hint, budget }) {
   });
 }
 
-window.addEventListener("DOMContentLoaded", () => {
+async function fetchAISuggestions({ category, hint, budget }) {
+  try {
+    const res = await fetch("https://supriseme-backend.onrender.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ category, hint, budget })
+    });
+
+    const data = await res.json();
+    return data.suggestions;
+  } catch (err) {
+    console.error("Error fetching AI suggestions:", err);
+    return "❌ AI failed to generate suggestions. Please try again later.";
+  }
+}
+
+window.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
   const encodedData = params.get("data");
 
+  const infoDiv = document.getElementById("wishlistInfo");
+  const suggestionsDiv = document.getElementById("suggestions");
+
   if (!encodedData) {
-    document.getElementById("wishlistInfo").innerHTML = "<p>Invalid link</p>";
+    infoDiv.innerHTML = "<p>Invalid link</p>";
     return;
   }
 
+  let decoded;
+  try {
+    decoded = JSON.parse(decodeURIComponent(encodedData));
 
-try{
-  const decoded = JSON.parse(decodeURIComponent(encodedData));
+    // Show wishlist info
+    infoDiv.innerHTML = `
+      <h2>🎉 Surprise Category: ${decoded.category}</h2>
+      <p><strong>Hint:</strong> ${decoded.hint || "No hint provided"}</p>
+      <p><strong>Budget:</strong> ${decoded.budget || "Not specified"}</p>
+      <p><strong>Note:</strong> ${decoded.note || "No note provided"}</p>
+    `;
 
-  document.getElementById("wishlistInfo").innerHTML = `
-    <h2>🎉 Surprise Category: ${decoded.category}</h2>
-    <p><strong>Hint:</strong> ${decoded.hint || "No hint provided"}</p>
-    <p><strong>Budget:</strong> ${decoded.budget || "Not specified"}</p>
-    <p><strong>Note:</strong> ${decoded.note || "No note provided"}</p>
-  `;
-  generateSearchLinks(decoded);
-}catch (err) {
+    generateSearchLinks(decoded);
+
+    // Show loading while AI is generating
+    suggestionsDiv.innerHTML = `<p>💡 Generating surprise ideas...</p>`;
+
+    const aiText = await fetchAISuggestions(decoded);
+
+    suggestionsDiv.innerHTML = `
+      <h3>✨ AI-Powered Suggestions:</h3>
+      <div class="ai-suggestions">${aiText.replace(/\n/g, "<br>")}</div>
+    `;
+  } catch (err) {
     console.error("Error decoding wishlist data:", err);
-    outputDiv.innerHTML = "<p>❌ Could not decode surprise details. Something went wrong.</p>";
+    infoDiv.innerHTML = "<p>❌ Could not decode surprise details.</p>";
+    suggestionsDiv.innerHTML = "";
   }
-
-  // Placeholder: Add suggestions
-  document.getElementById("suggestions").innerHTML = `
-    <h3>🛍 Suggestions coming soon...</h3>
-    <p>We’ll show ${decoded.category.toLowerCase()} from Flipkart/Myntra/etc.</p>
-  `;
 });

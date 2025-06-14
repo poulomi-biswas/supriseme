@@ -202,6 +202,15 @@ form button:hover {
   transform: translateY(-50%);
   z-index: 1000;
 }
+.ai-suggestions {
+  background: #fffdfc;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-left: 4px solid #6e44ff;
+  font-style: italic;
+  border-radius: 6px;
+  color: #333;
+}
 
 .shop-links-container a {
   display: flex;
