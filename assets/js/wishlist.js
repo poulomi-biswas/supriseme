@@ -61,25 +61,7 @@ function generateSearchLinks({ category, hint, budget }) {
   });
 }
 
-async function fetchAISuggestions({ category, hint, budget }) {
-  try {
-    const res = await fetch("https://supriseme-backend.onrender.com/api/suggestions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ category, hint, budget })
-    });
-
-    const data = await res.json();
-    return data.suggestions;
-  } catch (err) {
-    console.error("Error fetching AI suggestions:", err);
-    return "❌ AI failed to generate suggestions. Please try again later.";
-  }
-}
-
-window.addEventListener("DOMContentLoaded", async () => {
+window.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const encodedData = params.get("data");
 
@@ -91,11 +73,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  let decoded;
   try {
-    decoded = JSON.parse(decodeURIComponent(encodedData));
+    const decoded = JSON.parse(decodeURIComponent(encodedData));
 
-    // Show wishlist info
     infoDiv.innerHTML = `
       <h2>🎉 Surprise Category: ${decoded.category}</h2>
       <p><strong>Hint:</strong> ${decoded.hint || "No hint provided"}</p>
@@ -104,18 +84,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     `;
 
     generateSearchLinks(decoded);
+    suggestionsDiv.innerHTML = "<p>🔍 AI suggestions not available at this moment.</p>";
 
-    // Show loading while AI is generating
-    suggestionsDiv.innerHTML = `<p>💡 Generating surprise ideas...</p>`;
-
-    const aiText = await fetchAISuggestions(decoded);
-
-    suggestionsDiv.innerHTML = `
-      <h3>✨ AI-Powered Suggestions:</h3>
-      <div class="ai-suggestions">
-        ${typeof aiText === "string" ? aiText.replace(/\n/g, "<br>") : "⚠️ AI returned no suggestions."}
-      </div>
-    `;
   } catch (err) {
     console.error("Error decoding wishlist data:", err);
     infoDiv.innerHTML = "<p>❌ Could not decode surprise details.</p>";
