@@ -58,7 +58,7 @@ body {
 }
 
 h1 {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 1.8rem;
   color: #8b4f39;
   margin-bottom: 10px;
@@ -76,7 +76,6 @@ form label {
   margin: 15px 0 5px;
   font-weight: 600;
 }
-
 
 form input,
 form select,
@@ -163,38 +162,25 @@ form button:hover {
   line-height: 1.6;
 }
 
-#suggestions {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(6px);
-  margin: 40px auto;
-  padding: 20px;
+/* === AI SUGGESTION BOX BELOW CATEGORY === */
+#wishlistInfo + .ai-box {
+  margin-top: 10px;
+}
+
+.ai-box {
+  margin: 20px auto;
+  padding: 16px;
   border-radius: 20px;
-  max-width: 550px;
-  text-align: center;
-  font-size: 1.05rem;
-  color: #6c4c47;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
-}
-
-.shop-link {
-  display: inline-block;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #ffc3a0, #ff758f);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
-  border-radius: 30px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: transform 0.3s ease, background 0.4s ease;
-  box-shadow: 0 5px 15px rgba(255, 120, 140, 0.2);
-  border: none;
+  text-align: center;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
 }
 
-.shop-link:hover {
-  transform: scale(1.04);
-  background: linear-gradient(135deg, #ff758f, #ffc3a0);
-}
-
+/* === SHOPPING LINKS CONTAINER === */
 .shop-links-container {
   position: fixed;
   top: 50%;
@@ -203,12 +189,11 @@ form button:hover {
   z-index: 1000;
 }
 
-
 .shop-links-container a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   background: linear-gradient(135deg, #ffc3a0, #ff758f);
   color: #3d2b2b;
   padding: 14px 22px;
@@ -226,29 +211,21 @@ form button:hover {
   text-overflow: ellipsis;
 }
 
-
-/* After — full-width and center aligned */
-.ai-box {
-  margin: 20px auto;
-  padding: 16px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  text-align: center;
-  max-width: 600px;
-  width: 90%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
-}
-
-
 .shop-links-container a:hover {
   transform: scale(1.04);
   background: linear-gradient(135deg, #f6d365, #fda085);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
-/* Cute emojis spacing */
+/* Icon inside shopping link */
+.shop-links-container img.shop-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+/* Optional: spacing for emojis if still needed */
 .shop-link::before {
   margin-right: 4px;
 }
