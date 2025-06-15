@@ -112,7 +112,9 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     suggestionsDiv.innerHTML = `
       <h3>✨ AI-Powered Suggestions:</h3>
-      <div class="ai-suggestions">${aiText.replace(/\n/g, "<br>")}</div>
+      <div class="ai-suggestions">
+        ${typeof aiText === "string" ? aiText.replace(/\n/g, "<br>") : "⚠️ AI returned no suggestions."}
+      </div>
     `;
   } catch (err) {
     console.error("Error decoding wishlist data:", err);
