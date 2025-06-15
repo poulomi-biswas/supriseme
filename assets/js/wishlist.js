@@ -5,7 +5,7 @@ function generateSearchLinks({ category, hint, budget }) {
     {
       name: "Flipkart",
       url: `https://www.flipkart.com/search?q=${keywords}`,
-      icon: "🛒",
+      icon: "https://www.citypng.com/public/uploads/preview/hd-flipkart-round-logo-icon-transparent-png-701751694966204grvmunpzzf.png",
       note: "Direct Flipkart search"
     },
     {
