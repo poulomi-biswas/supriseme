@@ -187,6 +187,14 @@ form button:hover {
 #wishlistInfo + .ai-box {
   margin-top: 10px;
 }
+/* Add spacing between main components */
+#wishlistInfo,
+.output-container,
+.shop-links-container,
+.ai-box {
+  margin-bottom: 1rem;
+}
+
 
 .ai-box {
   margin: 20px auto;
