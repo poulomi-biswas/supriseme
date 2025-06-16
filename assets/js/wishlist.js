@@ -1,5 +1,5 @@
-function generateSearchLinks({ category, hint, budget }) {
-  const keywords = `${hint} ${category} ${budget}`.trim().replace(/\s+/g, "+");
+function generateSearchLinks({  hint, budget }) {
+  const keywords = `${hint}  ${budget}`.trim().replace(/\s+/g, "+");
 
   const links = [
     {
