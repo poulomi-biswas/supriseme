@@ -318,49 +318,40 @@ body.wishlist-page {
   z-index: -1;
 }
 
+.shop-links-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.shop-links-container::-webkit-scrollbar-thumb {
+  background: #ffb3b3;
+  border-radius: 10px;
+}
+
+
 /* === RESPONSIVE FIXES === */
 @media (max-width: 768px) {
   .shop-links-container {
-    position: fixed;
-    top: auto;
-    bottom: 20px;
-    right: 50%;
-    transform: translateX(50%);
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 12px;
+    padding: 10px 0;
+    justify-content: flex-start;
     width: 100%;
     max-width: 100%;
-    padding: 10px;
-    z-index: 999;
+    margin: 0 auto;
+    scroll-snap-type: x mandatory;
   }
 
   .shop-links-container a {
-    flex: 1 1 140px;
-    max-width: 160px;
+    flex: 0 0 auto;
+    min-width: 140px;
+    max-width: 180px;
+    scroll-snap-align: start;
     font-size: 0.9rem;
-    padding: 10px 16px;
-  }
-
-  #wishlistInfo {
-    margin: 20px 10px;
+    padding: 10px 14px;
   }
 }
 
-@media (max-width: 480px) {
-  .form-container {
-    padding: 24px 16px;
-    max-width: 90%;
-  }
-
-  .shop-links-container a {
-    font-size: 0.85rem;
-    padding: 8px 12px;
-    max-width: 100%;
-  }
-
-  .shop-links-container {
-    gap: 8px;
-  }
-}
