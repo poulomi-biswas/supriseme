@@ -187,14 +187,6 @@ form button:hover {
 #wishlistInfo + .ai-box {
   margin-top: 10px;
 }
-/* Add spacing between main components */
-#wishlistInfo,
-.output-container,
-.shop-links-container,
-.ai-box {
-  margin-bottom: 1rem;
-}
-
 
 .ai-box {
   margin: 20px auto;
@@ -230,21 +222,19 @@ form button:hover {
   gap: 8px;
   background: linear-gradient(135deg, #ffc3a0, #ff758f);
   color: #3d2b2b;
-  padding: 10px 14px;
+  padding: 14px 22px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   width: 100%;
-  max-width: 160px;
-  min-width: 120px;
+  max-width: 200px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-    flex: 1 1 40%;
 }
 
 .shop-links-container a:hover {
@@ -336,31 +326,18 @@ body.wishlist-page {
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 1.4rem;
-  }
-
-  #wishlistInfo h2 {
-    font-size: 1.3rem;
-  }
-
-  .form-container, #wishlistInfo, .ai-box {
-    padding: 16px;
-    margin: 1rem 0.5rem;
-  }
-
-  .output-container {
-    padding: 10px;
-  }
-
-  #shortLink, #copyBtn {
-    font-size: 0.85rem;
+  .form-container {
+    padding: 24px 16px;
+    max-width: 90%;
   }
 
   .shop-links-container a {
-    font-size: 0.8rem;
-    padding: 8px 10px;
-    max-width: 45%;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    max-width: 100%;
+  }
+
+  .shop-links-container {
+    gap: 8px;
   }
 }
-
