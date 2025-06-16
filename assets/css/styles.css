@@ -136,18 +136,32 @@ form button:hover {
 }
 
 /* === WISHLIST INFO CARD STYLES === */
-
+.wishlist-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+#suggestions {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1rem 1.5rem;
+  border-radius: 16px;
+  margin-top: 1rem;
+  color: #fff;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+}
 #wishlistInfo {
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(10px);
-  padding: 30px 25px;
-  border-radius: 25px;
-  max-width: 550px;
-  margin: 40px auto;
-  text-align: left;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #5b4b49;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  color: #5e2b63;
+  margin: 2rem auto;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
 }
 
 #wishlistInfo h2 {
