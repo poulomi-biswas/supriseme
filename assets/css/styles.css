@@ -346,10 +346,10 @@ body.wishlist-page {
   .shop-links-container {
     flex-direction: column;        /* Stack links vertically */
     flex-wrap: nowrap;             /* Disable wrapping */
-    align-items: stretch;          /* Make full-width buttons */
+    align-items: center;          /* Make full-width buttons */
     gap: 12px;
-    overflow-y: auto;              /* Vertical scroll if needed */
-    max-height: 60vh;              /* Optional: limit height to prevent overlap */
+    overflow-y: auto;             
+    max-height: 60vh;              
     padding: 0.5rem 0;
   }
 
