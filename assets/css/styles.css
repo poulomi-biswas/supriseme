@@ -233,15 +233,35 @@ form button:hover {
 
 /* Icon inside shopping link */
 .shop-links-container img.shop-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  object-fit: contain;
+}
+.shop-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #fcb0b3, #f38b96);
+  border-radius: 30px;
+  margin: 8px 0;
+  color: #000;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.shop-link:hover {
+  transform: scale(1.03);
+}
+
+.shop-logo {
   width: 24px;
   height: 24px;
   object-fit: contain;
-  border-radius: 6px;
-  background-color: white;
-  padding: 2px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
 
 /* Optional: spacing for emojis if still needed */
 .shop-link::before {
