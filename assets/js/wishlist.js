@@ -89,7 +89,7 @@ window.addEventListener("DOMContentLoaded", () => {
     `;
 
     generateSearchLinks(decoded);
-    suggestionsDiv.innerHTML = "<p>🔍 AI suggestions not available at this moment.</p>";
+    suggestionsDiv.innerHTML = "<p> AI suggestions not available at this moment.</p>";
 
   } catch (err) {
     console.error("Error decoding wishlist data:", err);

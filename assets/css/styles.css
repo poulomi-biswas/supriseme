@@ -56,7 +56,14 @@ body {
   color: #5b4b49;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
+.output-container p {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0.5rem 0;
+}
 h1 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 1.8rem;
@@ -196,11 +203,16 @@ form button:hover {
 
 /* === SHOPPING LINKS CONTAINER === */
 .shop-links-container {
-  position: fixed;
-  top: 50%;
-  right: 30px;
-  transform: translateY(-50%);
-  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 1rem;
+  padding: 10px;
+  position: relative;
+  transform: none;
+  top: auto;
+  right: auto;
 }
 
 .shop-links-container a {
@@ -210,19 +222,21 @@ form button:hover {
   gap: 8px;
   background: linear-gradient(135deg, #ffc3a0, #ff758f);
   color: #3d2b2b;
-  padding: 14px 22px;
+  padding: 10px 14px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   width: 100%;
-  max-width: 200px;
+  max-width: 160px;
+  min-width: 120px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+    flex: 1 1 40%;
 }
 
 .shop-links-container a:hover {
@@ -314,18 +328,31 @@ body.wishlist-page {
 }
 
 @media (max-width: 480px) {
-  .form-container {
-    padding: 24px 16px;
-    max-width: 90%;
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  #wishlistInfo h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-container, #wishlistInfo, .ai-box {
+    padding: 16px;
+    margin: 1rem 0.5rem;
+  }
+
+  .output-container {
+    padding: 10px;
+  }
+
+  #shortLink, #copyBtn {
+    font-size: 0.85rem;
   }
 
   .shop-links-container a {
-    font-size: 0.85rem;
-    padding: 8px 12px;
-    max-width: 100%;
-  }
-
-  .shop-links-container {
-    gap: 8px;
+    font-size: 0.8rem;
+    padding: 8px 10px;
+    max-width: 45%;
   }
 }
+
