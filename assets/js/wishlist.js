@@ -5,43 +5,43 @@ function generateSearchLinks({ category, hint, budget }) {
     {
       name: "Flipkart",
       url: `https://www.flipkart.com/search?q=${keywords}`,
-      icon: "🛒",
+      icon: "assets/icons/flipkart.svg",
       note: "Direct Flipkart search"
     },
     {
       name: "Amazon",
       url: `https://www.amazon.in/s?k=${keywords}`,
-      icon: "📦",
+      icon: "assets/icons/social.png",
       note: "Direct Amazon search"
     },
     {
       name: "Myntra",
       url: `https://www.google.com/search?q=site:myntra.com+${keywords}`,
-      icon: "👗",
+      icon: "assets/icons/myntra.jpg",
       note: "Google search on Myntra"
     },
     {
       name: "Urbanic",
       url: `https://www.google.com/search?q=site:urbanic.com+${keywords}`,
-      icon: "✨",
+      icon: "assets/icons/ur.png",
       note: "Google search on Urbanic"
     },
     {
       name: "Ajio",
       url: `https://www.google.com/search?q=site:ajio.com+${keywords}`,
-      icon: "👖",
+      icon: "assets/icons/ajio.png",
       note: "Google search on Ajio"
     },
     {
       name: "Nykaa",
       url: `https://www.google.com/search?q=site:nykaa.com+${keywords}`,
-      icon: "💄",
+      icon: "assets/icons/unnamed.png",
       note: "Google search on Nykaa"
     },
     {
       name: "Meesho",
       url: `https://www.google.com/search?q=site:meesho.com+${keywords}`,
-      icon: "🛍️",
+      icon: "assets/icons/meesho.png",
       note: "Google search on Meesho"
     }
   ];
@@ -49,16 +49,21 @@ function generateSearchLinks({ category, hint, budget }) {
   const container = document.getElementById("shoppingLinks");
   container.innerHTML = "<h3>🛍 View Suggestions On:</h3>";
 
-  links.forEach(({ name, url, icon, note }) => {
-    const a = document.createElement("a");
-    a.href = url;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-    a.className = "shop-link";
-    a.title = note;
-    a.innerText = `${icon} ${name}`;
-    container.appendChild(a);
-  });
+links.forEach(({ name, url, icon, alt }) => {
+  const a = document.createElement("a");
+  a.href = url;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  a.className = "shop-link";
+
+  a.innerHTML = `
+    <img src="${icon}" alt="${alt}" class="shop-logo" />
+    ${name}
+  `;
+
+  container.appendChild(a);
+});
+
 }
 
 window.addEventListener("DOMContentLoaded", () => {
